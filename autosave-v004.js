@@ -8,20 +8,23 @@ let doneTypingInterval = 3000;  //tiden det tar fra en slutter å skrive til aut
 let collectionId = "collectionId from cms";
 let itemId = "itemId from cms";
 */
+let issaving = false;
 
 //tømmer array save oppstart og etter mottatt response
 arrayready();
+
 
 //tømmer array og setter navn som er obligatorisk
 function arrayready(){
 autosavefield = [];
 autosavevalue = [];
 //setter leverandørnavn-nr som opprinnelig
-setnamevalue();
+setnamevalue()
 }
 
 //Trigger når en er ferdig å skrive og trykker enter evt. utenfor feltet.
 $('textarea'). change(function(){
+	if(issaving){
 if (this.parentElement.classList.contains("autosave")){
 	if(!autosavefield.includes(this.name)){
 	//om den ikke inneholder det tidligere
@@ -34,6 +37,7 @@ if (this.parentElement.classList.contains("autosave")){
 	}
 	}
 	startcounter();
+}
 });
 
 //Trigger når et hidden field forandrer innhold
@@ -152,8 +156,10 @@ function startcounter(){
 function counterdone() {
     console.log("Autosave:/n","field:",autosavefield,"value:",autosavevalue);
 
+	issaving = true;
 	//kallet på api funksjonen 
     callapi(collectionId,itemId,autosavefield,autosavevalue,"PATCH","webflow","239");
+	
 	//synliggjør elementer
     document.getElementById("autosave").style.display="Block"
     document.getElementById("autosavedone").style.display="none"
@@ -173,6 +179,7 @@ function setsave(){
 
 //funksjonene som trigges etter retur fra api
 function apireturn(data,id){
+	issaving = false;
 	//synligjør elementer
 	setsave();
 	// tømmer array klar for neste autosave
