@@ -11,8 +11,7 @@ autosavefield.push("name");
 autosavevalue.push("{{wf {&quot;path&quot;:&quot;name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}");
 }
 
-/////////input to autosave
-
+//input from textarea trigger når en er ferdig å skrive og trykker enter evt. utenfor feltet.
 $('textarea'). change(function(){
 if (this.parentElement.classList.contains("autosave")){
 	if(!autosavefield.includes(this.name)){
