@@ -46,6 +46,7 @@ if (this.parentElement.classList.contains("autosave")){
 
 //Trigger når et hidden field forandrer innhold
 $('input[type=hidden]').change(function(){
+	if(!issaving){
 if (this.parentElement.classList.contains("autosavetext")){
 	if(!autosavefield.includes(this.name)){
 	//om den ikke inneholder det tidligere
@@ -58,10 +59,14 @@ if (this.parentElement.classList.contains("autosavetext")){
 	}
 	}
 	startcounter();
+}else{
+	isinsavealert();
+}
 });
 
 //Trigger når en radiobox endres
 $('input[type=radio]').change(function(){
+	if(!issaving){
 if (this.parentElement.classList.contains("autosave")){
 	if(!autosavefield.includes(this.name)){
 	//om den ikke inneholder det tidligere
@@ -74,10 +79,14 @@ if (this.parentElement.classList.contains("autosave")){
 	}
 	}
 	startcounter();
+}else{
+	isinsavealert();
+}
 });
 
 //Trigger når en select box endres
 $('select'). change(function(){
+	if(!issaving){
 if (this.classList.contains("autosave")){
 	if(!autosavefield.includes(this.name)){
 	//om den ikke inneholder det tidligere
@@ -90,6 +99,9 @@ if (this.classList.contains("autosave")){
 	}
 	}
 	startcounter();
+}else{
+	isinsavealert();
+}
 });
 
 //Trigger når en taster inn i et textfelt
@@ -114,6 +126,7 @@ $('input'). keyup(function(){
 
 //her kan en sende array til et felt
 function arrayautosave(fieldname,array){
+	if(!issaving){
 if(!autosavefield.includes(fieldname)){
 	//om den ikke inneholder det tidligere
 	autosavefield.push(fieldname);
@@ -124,10 +137,14 @@ if(!autosavefield.includes(fieldname)){
 	autosavevalue[index] = array;
 	}
   startcounter();
+   }else{
+	isinsavealert();
+  }
 }
 
 // Trigges fra en chechbox 
 function boxselect(elementid){
+	if(!issaving){
 const element = document.getElementById(elementid);
 	if (element.parentElement.parentElement.classList.contains("autosave")){
      	let value = "false";
@@ -148,7 +165,9 @@ const element = document.getElementById(elementid);
       
 	startcounter();
   	}
-  
+}else{
+	isinsavealert();
+}
 }
 
 //starte counter 
@@ -199,5 +218,4 @@ function apireturn(data,id){
 
 function isinsavealert(text){
 	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
-	
 	}
