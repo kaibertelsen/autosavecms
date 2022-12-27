@@ -25,17 +25,27 @@ async function callapi(collectionId,itemId,fieldnames,fieldvalues,type,db,fid){
 
 //PATCH
 if(type == "PATCH"){
-let response2 = await fetch(`https://webflow-woad.vercel.app/api/item?collectionId=${collectionId}&itemId=${itemId}&token=${token}`, {
-   method: "PATCH",
-   body: bodystring,
-   headers: {
-       'Content-Type': 'application/json'
-   }
- });
+    if(db=="webflow"){
+    //webflow
+    let response2 = await fetch(`https://webflow-woad.vercel.app/api/item?collectionId=${collectionId}&itemId=${itemId}&token=${token}`, {
+     method: "PATCH",
+     body: bodystring,
+     headers: {
+    'Content-Type': 'application/json'
+    }
+    });
+    let data2 = await response2.json();
+    apireturn (data2,fid);
+    }else(db=="airtable"){
+    //airtable
 
- let data2 = await response2.json();
- apireturn (data2,fid);
+
+   }
    }else if (type=="POST"){
+//POST
+
+
+
 
    }
 
