@@ -169,6 +169,35 @@ const element = document.getElementById(elementid);
 	isinsavealert();
 }
 }
+//trigges når en fil er lastet opp elementene må ha "uploadcare" class på seg
+function autosaveuploadcareelements(){
+	if(!issaving){
+	// alle elementer som har class="uploadcare"
+	$('.uploadcare').each(function(){
+	console.log("navn:",this.name,"Verdi:",this.value);
+	if (!this.value==""){
+	//hvis verdien ikke eksisterer hopp over dette objectet
+	if(!autosavefield.includes(this.name)){
+		//om den ikke inneholder det tidligere
+		autosavefield.push(this.name);
+		autosavevalue.push(this.value);
+		}else{
+		//oppdatere value i riktig index
+		var index = autosavefield.indexOf(this.name);
+		autosavevalue[index] = this.value;
+		}
+	  startcounter();
+	}
+	
+	});
+	}else{
+	isinsavealert();
+	}
+	
+}
+	
+
+
 
 //starte counter 
 function startcounter(){
