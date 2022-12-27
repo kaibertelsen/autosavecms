@@ -36,7 +36,7 @@ if(type == "PATCH"){
     });
     let data2 = await response2.json();
     apireturn (data2,fid);
-    }else(db=="airtable"){
+    }else if(db=="airtable"){
     //airtable
 
 
