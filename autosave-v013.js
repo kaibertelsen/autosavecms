@@ -171,10 +171,15 @@ const element = document.getElementById(elementid);
 }
 //trigges når en fil er lastet opp elementene må ha "uploadcare" class på seg
 // get widget reference
-const widget = uploadcare.Widget();
+const widget = uploadcare.Widget("[role=uploadcare-uploader]");
+const widget2 = uploadcare.Widget("[role=uploadcare-uploader2]");
 widget.onUploadComplete(fileInfo => {
   autosaveuploadcareelements();
 });
+
+widget2.onUploadComplete(fileInfo => {
+	autosaveuploadcareelements();
+  });
 
 function autosaveuploadcareelements(){
 	if(!issaving){
