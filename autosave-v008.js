@@ -219,3 +219,22 @@ function apireturn(data,id){
 function isinsavealert(text){
 	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
 	}
+
+
+
+document.getElementById("backbutton").onclick = function(event){
+// kontrolere at det ikke er noe som må lagres først
+if (autosavefield.length>1){
+//lagre først
+ let text = "Lagre de siste instillingene før du går tilbake?";
+  if (confirm(text) == true) {
+    text = "Lagrer!";
+    counterdone()
+  } else {
+    text = "Går tilbake!";
+    history.back();
+  }
+}else{
+history.back();
+}
+}
