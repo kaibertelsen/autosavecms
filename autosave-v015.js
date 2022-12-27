@@ -8,7 +8,7 @@ let doneTypingInterval = 3000;  //tiden det tar fra en slutter å skrive til aut
 let collectionId = "collectionId from cms";
 let itemId = "itemId from cms";
 */
-let issaving = false;
+var issaving = false;
 
 //tømmer array save oppstart og etter mottatt response
 arrayready();
