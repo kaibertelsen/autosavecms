@@ -170,6 +170,12 @@ const element = document.getElementById(elementid);
 }
 }
 //trigges når en fil er lastet opp elementene må ha "uploadcare" class på seg
+// get widget reference
+const widget = uploadcare.Widget("[role=uploadcare-uploader]");
+widget.onUploadComplete(fileInfo => {
+  autosaveuploadcareelements();
+});
+
 function autosaveuploadcareelements(){
 	if(!issaving){
 	// alle elementer som har class="uploadcare"
