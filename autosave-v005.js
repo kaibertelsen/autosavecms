@@ -24,7 +24,7 @@ setnamevalue()
 
 //Trigger når en er ferdig å skrive og trykker enter evt. utenfor feltet.
 $('textarea'). change(function(){
-	if(issaving){
+	if(!issaving){
 if (this.parentElement.classList.contains("autosave")){
 	if(!autosavefield.includes(this.name)){
 	//om den ikke inneholder det tidligere
@@ -37,6 +37,10 @@ if (this.parentElement.classList.contains("autosave")){
 	}
 	}
 	startcounter();
+}else{
+
+	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
+
 }
 });
 
@@ -90,6 +94,7 @@ if (this.classList.contains("autosave")){
 
 //Trigger når en taster inn i et textfelt
 $('input'). keyup(function(){
+	if(!issaving){
 	if (this.classList.contains("autosave")){
 	if(!autosavefield.includes(this.name)){
 	//om den ikke inneholder det tidligere
@@ -102,6 +107,9 @@ $('input'). keyup(function(){
 	}
 	}
 	startcounter();
+}else{
+	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
+}
 });
 
 //her kan en sende array til et felt
@@ -188,3 +196,7 @@ function apireturn(data,id){
 
 }
 
+
+function alert(text){
+	alert(text);
+	}
