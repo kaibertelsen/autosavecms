@@ -176,7 +176,7 @@ function startcounter(){
     if (autosavefield.length>0){
     typingTimer = setTimeout(counterdone, doneTypingInterval);
     }
-    console.log(autosavefield,autosavevalue);
+    
   }
 
   //Kjøres når counter er ferdig
