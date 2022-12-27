@@ -185,7 +185,6 @@ function autosaveuploadcareelements(){
 	if(!issaving){
 	// alle elementer som har class="uploadcare"
 	$('.uploadcare').each(function(){
-	console.log("navn:",this.name,"Verdi:",this.value);
 	if (!this.value==""){
 	//hvis verdien ikke eksisterer hopp over dette objectet
 	if(!autosavefield.includes(this.name)){
