@@ -35,8 +35,9 @@ if (this.parentElement.classList.contains("autosave")){
 	var index = autosavefield.indexOf(this.name);
 	autosavevalue[index] = this.value;
 	}
-	}
 	startcounter();
+	}
+	
 }else{
 
 	isinsavealert();
@@ -57,8 +58,9 @@ if (this.parentElement.classList.contains("autosavetext")){
 	var index = autosavefield.indexOf(this.name);
 	autosavevalue[index] = this.value;
 	}
-	}
 	startcounter();
+	}
+	
 }else{
 	isinsavealert();
 }
@@ -77,8 +79,9 @@ if (this.parentElement.classList.contains("autosave")){
 	var index = autosavefield.indexOf(this.name);
 	autosavevalue[index] = this.value;
 	}
-	}
 	startcounter();
+	}
+	
 }else{
 	isinsavealert();
 }
@@ -97,8 +100,9 @@ if (this.classList.contains("autosave")){
 	var index = autosavefield.indexOf(this.name);
 	autosavevalue[index] = this.value;
 	}
-	}
 	startcounter();
+	}
+	
 }else{
 	isinsavealert();
 }
@@ -117,8 +121,9 @@ $('input'). keyup(function(){
 	var index = autosavefield.indexOf(this.name);
 	autosavevalue[index] = this.value;
 	}
-	}
 	startcounter();
+	}
+	
 }else{
 	isinsavealert();
 }
