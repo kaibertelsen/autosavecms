@@ -39,7 +39,7 @@ if (this.parentElement.classList.contains("autosave")){
 	startcounter();
 }else{
 
-	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
+	isinsavealert();
 
 }
 });
@@ -108,7 +108,7 @@ $('input'). keyup(function(){
 	}
 	startcounter();
 }else{
-	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
+	isinsavealert();
 }
 });
 
@@ -197,6 +197,7 @@ function apireturn(data,id){
 }
 
 
-function alert(text){
-	alert(text);
+function isinsavealert(text){
+	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
+	
 	}
