@@ -287,15 +287,15 @@ function apireturn(data,id){
 	issaving = false;
 	//synligjør elementer
 	setsave();
-	// tømmer array klar for neste autosave
-    arrayready();
-    returdata(data,id);
+	returdata(data,id);
 	//oppdaterer airtable base
 	let bodystring = makebodystring(autosavefield,autosavevalue);
 	callapi(airtablebaseId,airtabletableId,airtablerecordId,bodystring,"PATCH","airtable","102");
 	}else if (id=="102"){
 	//etter lagret i airtable
 	console.log("lagret i airtable","data:",data);	
+	// tømmer array klar for neste autosave
+    arrayready();
 	}
 
 

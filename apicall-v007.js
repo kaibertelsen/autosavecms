@@ -23,7 +23,7 @@ if(type == "PATCH"){
       method: "PATCH",
       body:bodystring,
         headers: {
-        	"content-type": "application/json"
+         'Content-Type': 'application/json'
         }
         
     });
