@@ -153,7 +153,7 @@ function boxselect(elementid){
 	if(!issaving){
 const element = document.getElementById(elementid);
 	if (element.parentElement.parentElement.classList.contains("autosave")){
-     	let value = "false;
+     	let value = "false";
      
         if (element.checked ==true){
 	value = "true";
