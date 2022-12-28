@@ -296,7 +296,8 @@ function apireturn(data,id){
 	setsave();
 	returdata(data,id);
 
-	//fikse logo fra retur av webflow
+	//fikse felt før henting i airtable
+	replacevalueelementwebtoair("output");
 	replaceobjectreturn("logo",data.logo.url);
 	//oppdaterer airtable base
 	let bodystring = makebodystring(autosavefield,autosavevalue);
@@ -312,8 +313,25 @@ function apireturn(data,id){
 
 }
 
+function replacevalueelementwebtoair(fieldname){
+	if(autosavefield.includes(fieldname)){
+	//finne field index i array
+	var index = autosavefield.indexOf(fieldname);
+	let elementid = autosavevalue[index];
+
+	//Finne element
+	const element = document.getElementById(elementid);
+
+	//hente data-airtable
+	let airtableid = element.dataset.airtable;
+	autosavevalue[index] = airtableid;
+	}
+	
+}
+
+
 function replaceobjectreturn(fieldname,replacevalue){
-console.log(fieldname,replacevalue);
+
 	if(autosavefield.includes(fieldname)){
 		//oppdatere value i riktig index
 		var index = autosavefield.indexOf(fieldname);
