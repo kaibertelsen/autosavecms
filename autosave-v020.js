@@ -19,6 +19,7 @@ function arrayready(){
 autosavefield = [];
 autosavevalue = [];
 //setter leverandørnavn-nr som opprinnelig
+console.log("array tømmes");
 setnamevalue()
 }
 
