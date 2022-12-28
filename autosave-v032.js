@@ -287,31 +287,7 @@ function setsave(){
 }
 
 
-//funksjonene som trigges etter retur fra api
-function apireturn(data,id){
-	
-	if (id=="101"){
-	issaving = false;
-	//synligjør elementer
-	setsave();
-	returdata(data,id);
 
-	//fikse felt før henting i airtable
-	replacevalueelementwebtoair("output");
-	replaceobjectreturn("logo",data.logo.url);
-	//oppdaterer airtable base
-	let bodystring = makebodystring(autosavefield,autosavevalue);
-	callapi(airtablebaseId,airtabletableId,airtablerecordId,bodystring,"PATCH","airtable","102");
-	}else if (id=="102"){
-	//etter lagret i airtable
-	console.log("lagret i airtable","data:",data);	
-	// tømmer array klar for neste autosave
-    arrayready();
-	}
-
-
-
-}
 
 function replacevalueelementwebtoair(fieldname){
 	if(autosavefield.includes(fieldname)){
@@ -327,6 +303,28 @@ function replacevalueelementwebtoair(fieldname){
 	let airtableid = element.dataset.airtable;
 	array.push(airtableid);
 	autosavevalue[index] = array;
+	}
+	
+}
+
+function replacearraywebtoair(fieldname){
+	//bytte webflowid arrai med airtableidarrai
+	
+	if(autosavefield.includes(fieldname)){
+	//finne field index i array
+	var airtablearay = [];
+	var index = autosavefield.indexOf(fieldname);
+	var currentarray = autosavevalue[index];
+	for (let i = 0; i < currentarray.length; i++) {
+		//finne elementet
+		let elementid = currentarray[i];
+		const element = document.getElementById(elementid);
+		let airtableid = element.dataset.airtable;
+		//hente airtableid
+	    airtablearay.push(airtableid);
+	}
+	
+	autosavevalue[index] = airtablearay;
 	}
 	
 }
