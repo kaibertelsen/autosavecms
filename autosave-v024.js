@@ -258,10 +258,10 @@ for (let i = 0; i < fieldnames.length; i++) {
    bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+"["+subitem+"]"+",";
    }else if(fieldvalues=="true"){
   //om det er et booleanfelt
-        bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+fieldvalues[i]+",";
+        bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+true+",";
    }else if (fieldvalues=="false"){
 	//om det er et booleanfelt
-	bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+fieldvalues[i]+",";
+	bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+false+",";
    }else{
  	// vanlig tekstfelt
 	bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+'"'+fieldvalues[i]+'"'+",";
