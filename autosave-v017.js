@@ -227,14 +227,45 @@ function startcounter(){
 function counterdone() {
     console.log("Autosave:/n","field:",autosavefield,"value:",autosavevalue);
 
+	let bodystring = makebodystring(autosavefield,autosavevalue);
 	issaving = true;
 	//kallet på api funksjonen 
-    callapi(collectionId,itemId,autosavefield,autosavevalue,"PATCH","webflow","239");
+    callapi(collectionId,itemId,bodystring,"PATCH","webflow","239");
 	
 	//synliggjør elementer
     document.getElementById("autosave").style.display="Block"
     document.getElementById("autosavedone").style.display="none"
 }
+
+
+function makebodystring(fieldnames,fieldvalues){
+// lag bodystrin for apicall
+let bodystring="{";
+for (let i = 0; i < fieldnames.length; i++) {
+  //for hver enhet i fieldnames
+	if(Array.isArray(fieldvalues[i])){
+     //om det er et arrayfelt
+     let subitem = "";
+     var subitemarray = fieldvalues[i];
+     for (let i = 0; i < subitemarray.length; i++) {
+         //loope gjennom alle subitem
+         subitem = subitem+'"'+subitemarray[i]+'"'+',';
+     }
+     subitem = subitem.slice(0, -1)
+
+   bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+"["+subitem+"]"+",";
+   }else{
+  //om det er et vanlig felt
+        bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+'"'+fieldvalues[i]+'"'+",";
+   }
+       }
+//fjerner siste ","	   
+bodystring = bodystring.slice(0, -1)
+bodystring = bodystring+"}";
+console.log(bodystring);
+return (bodystring);
+}
+
 
 function setsave(){
 	//synliggjør elementer
