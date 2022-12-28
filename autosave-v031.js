@@ -322,9 +322,11 @@ function replacevalueelementwebtoair(fieldname){
 	//Finne element
 	const element = document.getElementById(elementid);
 
+	var array = [];
 	//hente data-airtable
 	let airtableid = element.dataset.airtable;
-	autosavevalue[index] = "["+'"'+airtableid+'"'+"]";
+	array.push(airtableid);
+	autosavevalue[index] = array;
 	}
 	
 }
