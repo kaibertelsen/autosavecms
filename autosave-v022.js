@@ -153,10 +153,10 @@ function boxselect(elementid){
 	if(!issaving){
 const element = document.getElementById(elementid);
 	if (element.parentElement.parentElement.classList.contains("autosave")){
-     	let value = false;
+     	let value = "false;
      
         if (element.checked ==true){
-	value = true;
+	value = "true";
         }
      
 	if(!autosavefield.includes(element.name)){
@@ -256,12 +256,18 @@ for (let i = 0; i < fieldnames.length; i++) {
      subitem = subitem.slice(0, -1)
 
    bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+"["+subitem+"]"+",";
+   }else if(fieldvalues=="true"){
+  //om det er et booleanfelt
+        bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+fieldvalues[i]+",";
+   }else if (fieldvalues=="false"){
+	//om det er et booleanfelt
+	bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+fieldvalues[i]+",";
    }else{
-  //om det er et vanlig felt
-        bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+'"'+fieldvalues[i]+'"'+",";
+ 	// vanlig tekstfelt
+	bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+'"'+fieldvalues[i]+'"'+",";
    }
        }
-//fjerner siste ","	   
+	//fjerner siste ","	   
 bodystring = bodystring.slice(0, -1)
 bodystring = bodystring+"}";
 console.log(bodystring);
