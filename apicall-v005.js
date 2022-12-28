@@ -1,5 +1,5 @@
 
-async function callapi(collectionId,itemId,bodystring,type,db,fid){
+async function callapi(baseId,collectionId,itemId,bodystring,type,db,fid){
 
 // fra memberstack
 let token = MemberStack.getToken();
@@ -19,12 +19,20 @@ if(type == "PATCH"){
     apireturn (data2,fid);
     }else if(db=="airtable"){
     //airtable
-
-
+    let response = await fetch(`https://expoapi-zeta.vercel.app/api/row?baseId=${baseId}&tableId=${collectionId}&rowId=${itemId}&token=${token}`, {
+      method: "PATCH",
+      body:bodystring,
+        headers: {
+        	"content-type": "application/json"
+        }
+        
+    });
+    let data = await response.json();
+    apireturn (data,fid);
    }
 //POST
 }else if (type=="POST"){
-
+   
 
 
 

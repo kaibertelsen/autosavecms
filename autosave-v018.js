@@ -229,9 +229,9 @@ function counterdone() {
 
 	let bodystring = makebodystring(autosavefield,autosavevalue);
 	issaving = true;
-	
-	//kallet på api funksjonen 
-    callapi(collectionId,itemId,bodystring,"PATCH","webflow","239");
+	let = baseId="";
+	//kallet på api webflow funksjonen 
+    callapi(baseId,collectionId,itemId,bodystring,"PATCH","webflow","101");
 	
 	//synliggjør elementer
     document.getElementById("autosave").style.display="Block"
@@ -282,12 +282,23 @@ function setsave(){
 
 //funksjonene som trigges etter retur fra api
 function apireturn(data,id){
+	
+	if (id=="101"){
 	issaving = false;
 	//synligjør elementer
 	setsave();
 	// tømmer array klar for neste autosave
     arrayready();
-    returdata(data,id)
+    returdata(data,id);
+	//oppdaterer airtable base
+	let bodystring = makebodystring(autosavefield,autosavevalue);
+	callapi(airtablebaseId,airtabletableId,airtablerecordId,bodystring,"PATCH","airtable","102");
+	}else if (id=="102"){
+	//etter lagret i airtable
+	console.log("lagret i airtable");	
+	}
+
+
 
 }
 
