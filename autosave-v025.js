@@ -256,10 +256,10 @@ for (let i = 0; i < fieldnames.length; i++) {
      subitem = subitem.slice(0, -1)
 
    bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+"["+subitem+"]"+",";
-   }else if(fieldvalues=="true"){
+   }else if(fieldvalues[i]=="true"){
   //om det er et booleanfelt
         bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+true+",";
-   }else if (fieldvalues=="false"){
+   }else if (fieldvalues[i]=="false"){
 	//om det er et booleanfelt
 	bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+false+",";
    }else{
