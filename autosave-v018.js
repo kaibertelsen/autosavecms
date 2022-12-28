@@ -295,7 +295,7 @@ function apireturn(data,id){
 	callapi(airtablebaseId,airtabletableId,airtablerecordId,bodystring,"PATCH","airtable","102");
 	}else if (id=="102"){
 	//etter lagret i airtable
-	console.log("lagret i airtable");	
+	console.log("lagret i airtable","data:",data);	
 	}
 
 

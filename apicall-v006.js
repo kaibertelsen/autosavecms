@@ -27,7 +27,9 @@ if(type == "PATCH"){
         }
         
     });
+    console.log("bodystring:",bodystring);
     let data = await response.json();
+    console.log("data:",data);
     apireturn (data,fid);
    }
 //POST
