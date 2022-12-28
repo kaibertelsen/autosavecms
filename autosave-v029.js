@@ -324,7 +324,7 @@ function replacevalueelementwebtoair(fieldname){
 
 	//hente data-airtable
 	let airtableid = element.dataset.airtable;
-	autosavevalue[index] = airtableid;
+	autosavevalue[index] = "["+airtableid+"]";
 	}
 	
 }
