@@ -229,6 +229,7 @@ function counterdone() {
 
 	let bodystring = makebodystring(autosavefield,autosavevalue);
 	issaving = true;
+	
 	//kallet på api funksjonen 
     callapi(collectionId,itemId,bodystring,"PATCH","webflow","239");
 	
