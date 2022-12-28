@@ -297,7 +297,7 @@ function apireturn(data,id){
 	returdata(data,id);
 
 	//fikse logo fra retur av webflow
-	replaceobjectreturn("logo",data.logo);
+	replaceobjectreturn("logo",data.logo.url);
 	//oppdaterer airtable base
 	let bodystring = makebodystring(autosavefield,autosavevalue);
 	callapi(airtablebaseId,airtabletableId,airtablerecordId,bodystring,"PATCH","airtable","102");
