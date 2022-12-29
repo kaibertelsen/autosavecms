@@ -1,4 +1,4 @@
-function loadarrays (classname){
+function creatItem (classname){
 // finne alle elementer med create class
 var fieldnamesarray = [];
 var fieldvaluearray = [];
@@ -32,6 +32,43 @@ for(var i = 0; i < els.length; i++)
 
 }
 
-console.log("Names:",fieldnamesarray,"Value:",fieldvaluearray);
+//send array til body
+let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
+// kalle på api
+//kallet på api webflow funksjonen 
+callapi(baseId,collectionId,"",bodystring,"POST","webflow","201");
 }
 
+function makecreatebodystring(fieldnames,fieldvalues){
+  // lag bodystrin for apicall
+  let bodystring="{";
+  for (let i = 0; i < fieldnames.length; i++) {
+    //for hver enhet i fieldnames
+    if(Array.isArray(fieldvalues[i])){
+       //om det er et arrayfelt
+       let subitem = "";
+       var subitemarray = fieldvalues[i];
+       for (let i = 0; i < subitemarray.length; i++) {
+           //loope gjennom alle subitem
+           subitem = subitem+'"'+subitemarray[i]+'"'+',';
+       }
+       subitem = subitem.slice(0, -1)
+  
+     bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+"["+subitem+"]"+",";
+     }else if(fieldvalues[i]=="true"){
+    //om det er et booleanfelt
+          bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+true+",";
+     }else if (fieldvalues[i]=="false"){
+    //om det er et booleanfelt
+    bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+false+",";
+     }else{
+     // vanlig tekstfelt
+    bodystring = bodystring+'"'+fieldnames[i]+'"'+":"+'"'+fieldvalues[i]+'"'+",";
+     }
+         }
+    //fjerner siste ","	   
+  bodystring = bodystring.slice(0, -1)
+  bodystring = bodystring+"}";
+  console.log(bodystring);
+  return (bodystring);
+  }
