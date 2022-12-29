@@ -56,8 +56,9 @@ let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
 }
 
 function apireturnnew (data,fid){
+  //retur fra opprettelsen av webflow item
   let bodystring = makeupdatebodystring(data);
-  callapi(baseId,collectionId,data._id,bodystring,"PATCH","webflow",fid);
+  callapi("",collectionId,data._id,bodystring,"PATCH","webflow",fid);
 }
 
 function makeupdatebodystring(data){
