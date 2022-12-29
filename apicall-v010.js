@@ -42,7 +42,7 @@ if(type == "PATCH"){
     });
     
     let data = await response.json();
-    apireturn (data,fid);
+    apireturnnew (data,fid);
     
    }
 
@@ -52,3 +52,5 @@ if(type == "PATCH"){
    }
 
 }
+
+

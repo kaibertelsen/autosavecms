@@ -42,6 +42,17 @@ let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
 callapi(baseId,collectionId,"",bodystring,"POST","webflow","201");
 }
 
+function apireturnnew (data,fid){
+  let bodystring = makeupdatebodystring(data);
+  callapi(baseId,collectionId,data_id,bodystring,"PATCH","webflow",fid);
+}
+
+function makeupdatebodystring(data){
+  // lag bodystrin for å oppdatere webflowid
+  let bodystring="{"+"name"+":"+data.name+","+"webflowid:"+data._id+"}";
+  return (bodystring);
+  }
+
 function makecreatebodystring(fieldnames,fieldvalues){
   // lag bodystrin for apicall
   let bodystring="{";
