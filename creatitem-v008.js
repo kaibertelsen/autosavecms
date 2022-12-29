@@ -17,13 +17,13 @@ for(var i = 0; i < els.length; i++)
     var array = element.value.split(",");
     //sjekke om det er en array
     if(array.length >1){
-      // er det kun 1stk. item
+      // er mer en et element
     fieldnamesarray.push(element.name);
-    fieldvaluearray.push(element.value);
+    fieldvaluearray.push(array);
     }else{
       // er ikke array
       fieldnamesarray.push(element.name);
-      fieldvaluearray.push(array);
+      fieldvaluearray.push(element.value);
     }
 
 
