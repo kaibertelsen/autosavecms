@@ -14,10 +14,14 @@ for(var i = 0; i < els.length; i++)
     fieldvaluearray.push(element.value);
 
   }else if (element.tagName.toLowerCase() === 'select'){
-    
+    var array = element.value.split(",");
     //sjekke om det er en array
-    if(Array.isArray(element.value)){
+    if(Array.isArray(array)){
       // er array
+    console.log("dette er array");
+    fieldnamesarray.push(element.name);
+    fieldvaluearray.push(array);
+
 
     }else{
       // er ikke array
