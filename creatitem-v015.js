@@ -44,7 +44,7 @@ callapi(baseId,collectionId,"",bodystring,"POST","webflow","201");
 
 function apireturnnew (data,fid){
   let bodystring = makeupdatebodystring(data);
-  callapi(baseId,collectionId,data_id,bodystring,"PATCH","webflow",fid);
+  callapi(baseId,collectionId,data._id,bodystring,"PATCH","webflow",fid);
 }
 
 function makeupdatebodystring(data){
