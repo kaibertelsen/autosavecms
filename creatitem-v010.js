@@ -9,9 +9,12 @@ for(var i = 0; i < els.length; i++)
   const element = els[i];
   if (element.tagName.toLowerCase() === 'input') {
     //input field 
-    
+
+    if (!element.value=="")
+    //om feltene ikke er tomme
     fieldnamesarray.push(element.name);
     fieldvaluearray.push(element.value);
+  }
 
   }else if (element.tagName.toLowerCase() === 'select'){
     var array = element.value.split(",");
