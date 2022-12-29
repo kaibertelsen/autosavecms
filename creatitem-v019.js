@@ -43,7 +43,7 @@ if(db=="webflow"){
   //send array til body
 let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
 //kallet på api webflow funksjonen 
-callapi(baseId,collectionId,"",bodystring,"POST",db,"201");
+callapi("",collectionId,"",bodystring,"POST",db,"201");
 }else if (db=="airtable"){
   // legge til webflowid i bodystring om det skal lages et item i airtable
       fieldnamesarray.push("webflowid");
