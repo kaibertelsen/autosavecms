@@ -1,4 +1,4 @@
-function creatItem (classname){
+function creatItem (db,classname,webflowid){
 // finne alle elementer med create class
 var fieldnamesarray = [];
 var fieldvaluearray = [];
@@ -35,11 +35,24 @@ for(var i = 0; i < els.length; i++)
 
 }
 
+
+
+
+// kalle på api
+if(db=="webflow"){
+  //send array til body
+let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
+//kallet på api webflow funksjonen 
+callapi(baseId,collectionId,"",bodystring,"POST",db,"201");
+}else if (db=="airtable"){
+  // legge til webflowid i bodystring om det skal lages et item i airtable
+      fieldnamesarray.push("webflowid");
+      fieldvaluearray.push(webflowid);
 //send array til body
 let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
-// kalle på api
-//kallet på api webflow funksjonen 
-callapi(baseId,collectionId,"",bodystring,"POST","webflow","201");
+  // legge til 
+  callapi(baseId,collectionId,"",bodystring,"POST",db,"202");
+}
 }
 
 function apireturnnew (data,fid){
@@ -83,6 +96,12 @@ function makecreatebodystring(fieldnames,fieldvalues){
     //fjerner siste ","	   
   bodystring = bodystring.slice(0, -1)
   bodystring = bodystring+"}";
-  console.log(bodystring);
   return (bodystring);
   }
+
+function datatoairtable(data){
+
+
+
+
+}

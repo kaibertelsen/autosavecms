@@ -33,6 +33,7 @@ if(type == "PATCH"){
 //POST
 }else if (type=="POST"){
    if(db=="webflow"){
+   //webflow
    let response = await fetch(`https://webflow-woad.vercel.app/api/item?collectionId=${collectionId}&token=${token}`, {
       method: "POST",
       body: bodystring,
@@ -44,11 +45,18 @@ if(type == "PATCH"){
     let data = await response.json();
     apireturnnew (data,fid);
     
-   }
-
-
-
-
+   }else if(db=="airtable"){
+   //airtable
+   let response = await fetch(`https://expoapi-zeta.vercel.app/api/row?baseId=${baseId}&tableId=${tableId}&token=${token}`, {
+   method: "POST",
+   body:bodystring,
+   headers: {
+   'Content-Type': 'application/json'
+    }
+   });
+   let data = await response.json();
+   apireturn (data,fid);
+     }
    }
 
 }
