@@ -16,7 +16,7 @@ for(var i = 0; i < els.length; i++)
   }else if (element.tagName.toLowerCase() === 'select'){
     var array = element.value.split(",");
     //sjekke om det er en array
-    if(array.lengt >1){
+    if(array.length >1){
       // er det kun 1stk. item
     fieldnamesarray.push(element.name);
     fieldvaluearray.push(element.value);
