@@ -51,8 +51,6 @@ for(var i = 0; i < els.length; i++)
 }
 
 
-
-
 // kalle på api
 if(db=="webflow"){
   if(rdata){
