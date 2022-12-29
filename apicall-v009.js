@@ -32,7 +32,19 @@ if(type == "PATCH"){
    }
 //POST
 }else if (type=="POST"){
-   
+   if(db=="webflow"){
+   let response = await fetch(`https://webflow-woad.vercel.app/api/item?collectionId=${collectionId}&token=${token}`, {
+      method: "POST",
+      body: bodystring,
+      headers: {
+         "content-type": "application/json"
+      }
+    });
+    
+    let data = await response.json();
+    apireturn (data,fid);
+    
+   }
 
 
 
