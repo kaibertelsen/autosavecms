@@ -29,7 +29,9 @@ for(var i = 0; i < els.length; i++)
         if(db=="webflow"){
         fieldvaluearray.push(array[0]);
         }else if (db=="airtable"){
-          fieldvaluearray.push(array[1]);
+          var airarray = [];
+          airarray.push(array[1]);
+          fieldvaluearray.push(airarray);
         }
       }else{
         //dette er ikke sinelselect 
