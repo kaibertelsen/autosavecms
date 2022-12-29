@@ -49,7 +49,7 @@ function apireturnnew (data,fid){
 
 function makeupdatebodystring(data){
   // lag bodystrin for å oppdatere webflowid
-  let bodystring="{"+'"name"'+":"+'"'+data.name+'"'+","+'"webflowid:"'+'"'+data._id+'"'+"}";
+  let bodystring="{"+'"name"'+":"+'"'+data.name+'"'+","+'"webflowid"'+":"+'"'+data._id+'"'+"}";
   return (bodystring);
   }
 
