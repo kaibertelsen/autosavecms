@@ -20,9 +20,23 @@ for(var i = 0; i < els.length; i++)
     var array = element.value.split(",");
     //sjekke om det er en array
     if(array.length >1){
-      // er mer en et element
-    fieldnamesarray.push(element.name);
-    fieldvaluearray.push(array);
+      // er mer en et element er det webflowid og aitrableid
+
+  const element = els[i];
+      if(singelselectwebair.includes(element.name)){
+        // dette består av webflowid og airtableid
+        fieldnamesarray.push(element.name);
+        if(db=="webflow"){
+        fieldvaluearray.push(array[0]);
+        }else if (db=="airtable"){
+          fieldvaluearray.push(array[1]);
+        }
+      }else{
+        //dette er ikke sinelselect 
+        fieldvaluearray.push(array);
+      }
+      
+    
     }else{
       // er ikke array
       fieldnamesarray.push(element.name);
