@@ -1,4 +1,4 @@
-function creatItem (db,classname,webflowid){
+function creatItem (db,classname,webflowid,slug){
 // finne alle elementer med create class
 var fieldnamesarray = [];
 var fieldvaluearray = [];
@@ -21,8 +21,7 @@ for(var i = 0; i < els.length; i++)
     //sjekke om det er en array
     if(array.length >1){
       // er mer en et element er det webflowid og aitrableid
-
-  const element = els[i];
+      const element = els[i];
       if(singelselectwebair.includes(element.name)){
         // dette består av webflowid og airtableid
         fieldnamesarray.push(element.name);
@@ -61,9 +60,11 @@ let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
 //kallet på api webflow funksjonen 
 callapi("",collectionId,"",bodystring,"POST",db,"201");
 }else if (db=="airtable"){
-  // legge til webflowid i bodystring om det skal lages et item i airtable
+  // legge til webflowid og slug i bodystring om det skal lages et item i airtable
       fieldnamesarray.push("webflowid");
       fieldvaluearray.push(webflowid);
+      fieldnamesarray.push("slug");
+      fieldvaluearray.push(slug);
 //send array til body
 let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
   // legge til 
