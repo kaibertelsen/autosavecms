@@ -70,7 +70,7 @@ callapi("",collectionId,"",bodystring,"POST",db,"201");
   if(rdata.logo){
     //logo eksisterer erstatt innhold
     var index = fieldnamesarray.indexOf("logo");
-    fieldvaluearray[index] = rdata.logo;
+    fieldvaluearray[index] = rdata.logo.url;
   }
 
 //send array til body
