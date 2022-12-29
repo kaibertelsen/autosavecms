@@ -16,18 +16,14 @@ for(var i = 0; i < els.length; i++)
   }else if (element.tagName.toLowerCase() === 'select'){
     var array = element.value.split(",");
     //sjekke om det er en array
-    if(Array.isArray(array)){
-      // er array
-    console.log("dette er array");
+    if(array.lengt >1){
+      // er det kun 1stk. item
     fieldnamesarray.push(element.name);
-    fieldvaluearray.push(array);
-
-
+    fieldvaluearray.push(element.value);
     }else{
       // er ikke array
       fieldnamesarray.push(element.name);
-      fieldvaluearray.push(element.value);
-
+      fieldvaluearray.push(array);
     }
 
 
