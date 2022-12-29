@@ -10,7 +10,7 @@ for(var i = 0; i < els.length; i++)
   if (element.tagName.toLowerCase() === 'input') {
     //input field 
 
-    if (!element.value=="")
+    if (!element.value==""){
     //om feltene ikke er tomme
     fieldnamesarray.push(element.name);
     fieldvaluearray.push(element.value);
