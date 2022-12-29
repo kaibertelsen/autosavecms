@@ -1,4 +1,4 @@
-function creatItem (db,classname,webflowid,slug){
+function creatItem (db,classname,rdata){
 // finne alle elementer med create class
 var fieldnamesarray = [];
 var fieldvaluearray = [];
@@ -60,11 +60,19 @@ let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
 //kallet på api webflow funksjonen 
 callapi("",collectionId,"",bodystring,"POST",db,"201");
 }else if (db=="airtable"){
-  // legge til webflowid og slug i bodystring om det skal lages et item i airtable
+  // legge til webflowid
       fieldnamesarray.push("webflowid");
-      fieldvaluearray.push(webflowid);
+      fieldvaluearray.push(rdata._id);
+  //legge til slug
       fieldnamesarray.push("slug");
-      fieldvaluearray.push(slug);
+      fieldvaluearray.push(rdata.slug);
+  //erstatte logo string til webflow lagring
+  if(rdata.logo){
+    //logo eksisterer erstatt innhold
+    var index = fieldnamesarray.indexOf("logo");
+    fieldvaluearray[index] = rdata.logo;
+  }
+
 //send array til body
 let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
   // legge til 
