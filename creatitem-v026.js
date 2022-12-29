@@ -55,10 +55,22 @@ for(var i = 0; i < els.length; i++)
 
 // kalle på api
 if(db=="webflow"){
-  //send array til body
-let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
-//kallet på api webflow funksjonen 
-callapi("",collectionId,"",bodystring,"POST",db,"201");
+  if(rdata){
+  //dette er returdata og skal addes på en airtableid
+  fieldnamesarray.push("airtableid");
+  fieldvaluearray.push(rdata.id);
+
+  let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
+  //kallet på api webflow funksjonen 
+  callapi("",collectionId,rdata.fields.webflowid,bodystring,"PATCH",db,"203");
+
+
+  }else{
+  //send array til body før opprettelse
+  let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
+  //kallet på api webflow funksjonen 
+  callapi("",collectionId,"",bodystring,"POST",db,"201");
+  }
 }else if (db=="airtable"){
   // legge til webflowid
       fieldnamesarray.push("webflowid");
