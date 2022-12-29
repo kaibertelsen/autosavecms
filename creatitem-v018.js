@@ -51,7 +51,7 @@ callapi(baseId,collectionId,"",bodystring,"POST",db,"201");
 //send array til body
 let bodystring = makecreatebodystring(fieldnamesarray,fieldvaluearray);
   // legge til 
-  callapi(baseId,collectionId,"",bodystring,"POST",db,"202");
+  callapi(airtablebaseId,airtabletableId,"",bodystring,"POST",db,"202");
 }
 }
 

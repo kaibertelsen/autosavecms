@@ -47,7 +47,7 @@ if(type == "PATCH"){
     
    }else if(db=="airtable"){
    //airtable
-   let response = await fetch(`https://expoapi-zeta.vercel.app/api/row?baseId=${baseId}&tableId=${tableId}&token=${token}`, {
+   let response = await fetch(`https://expoapi-zeta.vercel.app/api/row?baseId=${baseId}&tableId=${collectionId}&token=${token}`, {
    method: "POST",
    body:bodystring,
    headers: {
