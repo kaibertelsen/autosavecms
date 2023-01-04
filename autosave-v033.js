@@ -152,8 +152,12 @@ function replaceobjectreturn(fieldname,replacevalue){
 
 }
 
+function test(data){
+console.log(data);
 
 
+
+}
 
 function isinsavealert(text){
 	alert("Vent et øyeblikk, server lagrer tidligere instillinger");
